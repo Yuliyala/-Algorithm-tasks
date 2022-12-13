@@ -42,3 +42,68 @@ func removeDuplicates(input: inout[Int]) -> Int {
 }
 var array = [1,1,2,2,3,4,5,6,7,8]
 removeDuplicates(input: &array)
+
+
+// Бинарный поиск
+
+func binarySearch(array: [Int], item: Int) -> Int? {
+    var low = 0   // нижняя граница
+    var high  = array.count - 1 // верхняя граница
+    var midIndex = 0 // среднее значение
+    var mid = 0 //мы догадываемся , nа вот это ли число
+    
+    while low <= high {
+        midIndex = (low + high) / 2
+        mid = array[midIndex]
+        
+        if mid == item {
+            return midIndex
+        } else if item < mid {
+            high = midIndex - 1
+        } else {
+            low = midIndex + 1
+        }
+    }
+    return  nil
+}
+
+let binaryTestArray = [1, 3, 6, 7, 9, 12, 18]
+binarySearch(array: binaryTestArray, item: 9)
+
+
+// пример
+
+func sumOrMulty() {
+    let testArray = [1, 2, 3, 4, 5, 6]
+    
+//    for element in testArray {
+//        print(element)
+//    }
+//
+//    for index in 0..<testArray.count {
+//        print(index)
+//    }
+    /*
+     O(n)
+     O(n + 1) = O(n)
+     O(2n) = O(n)
+     */
+
+    
+    
+    for element in testArray {
+        for index in 0..<testArray.count {
+            print(element, index)
+        }
+}
+}
+sumOrMulty()
+
+/*
+ вложенный цикл практически всегда n^2
+O(n^2)
+O(n^2 + n) = O(n^2)
+ O(5 * n^2 + 10 * n^100) = O(2^n)
+ O(n^2 + B) -  пока не знаем как растет B, не можем его убрать
+ */
+
